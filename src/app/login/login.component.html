@@ -1,18 +1,26 @@
 <div class="card">
     <div class="card-body">
-        <form>
+        <form novalidate (ngSubmit)="onSubmit(f.value)" #f="ngForm">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                    else.</small>
+                <input #emailCtrl="ngModel" name="email" [(ngModel)]="email" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <ng-container *ngIf="emailCtrl.errors">
+                    <small class="form-error" *ngIf="emailCtrl.errors.required" style="color: red;">
+                        Required
+                    </small>
+                </ng-container>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input #passwordCtrl="ngModel" name="password" [(ngModel)]="password" type="password" required class="form-control" id="exampleInputPassword1">
+                <ng-container *ngIf="passwordCtrl.errors">
+                    <small class="form-error" *ngIf="emailCtrl.errors.required" style="color: red;">
+                        Required
+                    </small>
+                </ng-container>
             </div>
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input name="check" [(ngModel)]="check" type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
