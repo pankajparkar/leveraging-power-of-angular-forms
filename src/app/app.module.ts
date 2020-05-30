@@ -9,6 +9,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileTemplateComponent } from './user-profile-template/user-profile-template.component';
 import { UserProfileModelComponent } from './user-profile-model/user-profile-model.component';
 import { HomeComponent } from './home/home.component';
+import { MatcherDirective } from './directives/matcher.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     UserProfileComponent,
     UserProfileTemplateComponent,
     UserProfileModelComponent,
-    HomeComponent
+    HomeComponent,
+    MatcherDirective
   ],
   imports: [
     BrowserModule,
