@@ -5,6 +5,10 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'user-profile', component: LoginComponent },
+  { path: 'user-profile-template', component: LoginComponent },
+  { path: 'user-profile-model', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'login' },
 ];
 

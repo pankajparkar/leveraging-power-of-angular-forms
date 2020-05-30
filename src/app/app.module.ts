@@ -5,11 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileTemplateComponent } from './user-profile-template/user-profile-template.component';
+import { UserProfileModelComponent } from './user-profile-model/user-profile-model.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    UserProfileComponent,
+    UserProfileTemplateComponent,
+    UserProfileModelComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
