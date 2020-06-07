@@ -1,21 +1,30 @@
-<form class="container profile">
+<form class="container profile" [formGroup]="profileForm">
+    {{ profileForm.value | json }}
+    State : {{ profileForm.valid }}
     <h2>Edit Profile</h2>
-    <div class="form-group">
+    <div class="form-group" *ngIf="profileForm.get('email') as emailCtrl">
+        {{ emailCtrl.errors | json }}
         <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        <input type="email" formControlName="email" class="form-control" id="inputEmail4" placeholder="Email"> 
+        <div style="color: red;" *ngIf="emailCtrl.errors?.required">
+            Required
+        </div>
+        <div style="color: red;" *ngIf="emailCtrl.errors?.minlength">
+            Minlength should be 6
+        </div>
     </div>
     <div class="form-row">
         <div class="form-group col">
             <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <input type="text" formControlName="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
         </div>
         <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
+            <input type="text" formControlName="city" class="form-control" id="inputCity">
         </div>
         <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
+            <input type="text" formControlName="zip" class="form-control" id="inputZip">
         </div>
     </div>
     <h4>Skills</h4>
@@ -43,7 +52,7 @@
     </ul>
     <div class="form-group">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <input (change)="onAgreeChanged()" formControlName="agree" class="form-check-input" type="checkbox" id="gridCheck">
             <label class="form-check-label" for="gridCheck">
                 I agree
             </label>

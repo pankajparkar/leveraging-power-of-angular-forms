@@ -1,21 +1,30 @@
-<form class="container profile">
+<form class="container profile" #form="ngForm" (ngSubmit)="submit(form)">
+    {{ form.value | json}}
     <h2>Edit Profile</h2>
     <div class="form-group">
+        {{ emailCtrl.errors | json }}
+
         <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        <input #emailCtrl="ngModel" minlength="6" name="email" [(ngModel)]="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+        <div style="color: red;" *ngIf="emailCtrl.errors?.required">
+            Required
+        </div>
+        <div style="color: red;" *ngIf="emailCtrl.errors?.minlength">
+            Minlength should be 6
+        </div>
     </div>
     <div class="form-row">
         <div class="form-group col">
             <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <input name="address" [(ngModel)]="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
         </div>
         <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
+            <input name="city" [(ngModel)]="city" type="text" class="form-control" id="inputCity" required>
         </div>
         <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
+            <input name="zip" [(ngModel)]="zip" type="text" class="form-control" id="inputZip" required>
         </div>
     </div>
     <h4>Skills</h4>
